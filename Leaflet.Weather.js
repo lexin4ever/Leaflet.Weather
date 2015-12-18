@@ -35,10 +35,11 @@ L.Control.Weather = L.Control.extend({
   refresh: function(callback) {
     var _this = this,
       center = this._map.getCenter(),
-      url = "http://api.openweathermap.org/data/2.5/weather?lat=:lat&lon=:lng&lang=:lang&units=:units";
+      url = "http://api.openweathermap.org/data/2.5/weather?APPID=:apiid&lat=:lat&lon=:lng&lang=:lang&units=:units";
     url = url.replace(":lang", this.options.lang);
     url = url.replace(":units", this.options.units);
     url = url.replace(":lat", center.lat);
+    url = url.replace(":apiid", '49bb6ef3e65ce445b469970c8db102a3');
     url = url.replace(":lng", center.lng);
     $.getJSON(url, function(weather) {
       callback(weather);
